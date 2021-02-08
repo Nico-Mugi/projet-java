@@ -29,38 +29,25 @@ public class ModelImplementor {
 	}
 
 	public PieceSquareColor getPieceColor(Coord coord) {
-		PieceSquareColor color = null;
-
-		// TODO Atelier 1
-		
-		return color;
+		return (this.isPiecehere(coord) != false ? this.findPiece(coord).getPieceColor() : null);
 	}
 
 	public boolean isPiecehere(Coord coord) {
-		boolean isPiecehere = false;
-
-		// TODO Atelier 1
-		
-		return isPiecehere;
+		return (this.findPiece(coord) != null ? true : false);
 	}
 
 	public boolean isMovePieceOk(Coord initCoord, Coord targetCoord, boolean isPieceToTake) {
-
-		boolean isMovePieceOk = false;
-
-		// TODO Atelier 1
-		
-		return isMovePieceOk;
+		if(!(this.isPiecehere(initCoord) && !this.isPiecehere(targetCoord)))
+			return false;
+		return this.findPiece(initCoord).isMoveOk(targetCoord, isPieceToTake);
 	}
 
 
 	public boolean movePiece(Coord initCoord, Coord targetCoord) {
-
-		boolean isMovePieceDone = false;
-
-		// TODO Atelier 1
-		
-		return isMovePieceDone;
+		if(this.isPiecehere(initCoord))
+			return false;
+		this.findPiece(initCoord).move(targetCoord);
+		return true;
 	}
 
 	public void removePiece(Coord pieceToTakeCoord) {
@@ -84,12 +71,12 @@ public class ModelImplementor {
 	 * @return la pièce qui se trouve aux coordonnées indiquées
 	 */
 	 PieceModel findPiece(Coord coord) {		// TODO : mettre en "private" après test unitaires
-		 
-		PieceModel findPiece = null;
-
-		// TODO Atelier 1
-		
-		return findPiece;
+		for(PieceModel p : this.pieces) {
+			if(p.getCoord().equals(coord)){
+				return p;
+			}
+		}
+		return null;
 	}
 
 
@@ -107,16 +94,16 @@ public class ModelImplementor {
 		String st = "";
 		String[][] damier = new String[ModelConfig.LENGTH][ModelConfig.LENGTH];
 
-//		// création d'un tableau 2D avec les noms des pièces à partir de la liste de pièces
-//		for(PieceModel piece : this.pieces) {
-//
-//			PieceSquareColor color = piece.getPieceColor();
-//			String stColor = (PieceSquareColor.WHITE.equals(color) ? "--B--" : "--N--" );
-//
-//			int col = piece.getColonne() -'a';
-//			int lig = piece.getLigne() -1;
-//			damier[lig][col ] = stColor ;
-//		}
+		// création d'un tableau 2D avec les noms des pièces à partir de la liste de pièces
+		for(PieceModel piece : this.pieces) {
+
+			PieceSquareColor color = piece.getPieceColor();
+			String stColor = (PieceSquareColor.WHITE.equals(color) ? "--B--" : "--N--" );
+
+			int col = piece.getColonne() -'a';
+			int lig = piece.getLigne() -1;
+			damier[lig][col ] = stColor ;
+		}
 
 		// Affichage du tableau formatté
 		st = "     a      b      c      d      e      f      g      h      i      j\n";
