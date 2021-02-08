@@ -13,26 +13,20 @@ public class PawnModel implements PieceModel{
 
 	public PawnModel(Coord coord, PieceSquareColor pieceColor) {
 		super();
-
-		// TODO Atelier 1
+		this.coord = coord;
+		this.pieceColor = pieceColor;
 
 	}
 
 	@Override
 	public char getColonne() {
-		char colonne = ' ';
-		
-		// TODO Atelier 1
-
+		char colonne = this.coord.getColonne();
 		return colonne;
 	}
 
 	@Override
 	public int getLigne() {
-		int ligne = -1;
-		
-		// TODO Atelier 1
-
+		int ligne = this.coord.getLigne();
 		return ligne;
 	}
 
