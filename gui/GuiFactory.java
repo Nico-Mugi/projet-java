@@ -49,12 +49,7 @@ public class GuiFactory {
 		}
 		square = new BorderPane();
 		
-		// la couleur est définie par les valeurs par défaut de configuration
-		Color color = PieceSquareColor.BLACK.equals(squareColor) ? GuiConfig.CASEBLACK : GuiConfig.CASEWHITE;
-		square.setBackground(new Background(new BackgroundFill(color, CornerRadii.EMPTY, Insets.EMPTY)));
-		square.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
-		
-		return square;
+		return new SquareGui().createSquareView(square, squareColor);
 	}
 
 	/**
@@ -65,9 +60,9 @@ public class GuiFactory {
 	 */
 	public static ImageView createPiece(int col, int ligne) {
 
-		ImageView pieceGui = null;
 		Image image = null;
 		PieceSquareColor pieceColor = null;
+		ImageView pieceGui = null;
 
 		if  ( !((col % 2 == 0 && ligne % 2 == 0) || (col % 2 != 0 && ligne % 2 != 0)) ) {
 			if (ligne < 4)
@@ -76,9 +71,8 @@ public class GuiFactory {
 				pieceColor = PieceSquareColor.WHITE;
 		}
 		if (pieceColor != null) {
-			image = GuiFactory.createImage(pieceColor, true);
 			pieceGui = new ImageView();
-			pieceGui.setImage(image);
+			pieceGui = new PieceGui().createPieceView(pieceGui, image, pieceColor);
 		}
 
 		return pieceGui;
@@ -95,32 +89,6 @@ public class GuiFactory {
 		
 	}
 	
-	/**
-	 * @param pieceColor
-	 * @param ispawn
-	 * @return une image créée à partir d'un fichier png
-	 */
-	private static Image createImage(PieceSquareColor pieceColor, boolean ispawn) {
-
-		Image image = null;
-		String pieceImageFile = null, nomImageFile = null;
-		File g = new File("");
-
-		if (ispawn) {
-			nomImageFile = pieceColor == PieceSquareColor.BLACK ? "PionNoir.png" : "PionBlanc.png";
-		}
-		else {	
-			nomImageFile = pieceColor == PieceSquareColor.BLACK ? "DameNoire.png" : "DameBlanche.png";
-		}
-
-		pieceImageFile = g.getAbsolutePath()+"/images/" + nomImageFile;	// TODO - attention au chemin
-		try {
-			image = new Image(new FileInputStream(pieceImageFile));
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		return image;
-	}
 
 
 }
