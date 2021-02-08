@@ -31,8 +31,8 @@ public class TestModel {
 		System.out.println("coord valides ('b',11) ? "+ Coord.coordonnees_valides(new Coord('b',11) ));	//false
 		System.out.println("c1.equals(c2) ? "+ c1.equals(c2));	// false
 		System.out.println("c1.equals(new Coord('a', 7)) ? "+ c1.equals(new Coord('a', 7)));	// true
-//		System.out.println("c1.compareTo(c2) ? "+ c1.compareTo(c2) );	// nb n�gatif car c1 < c2
-//		System.out.println("c1.compareTo(new Coord('a', 7)) ? "+ c1.compareTo(new Coord('a', 7)) );	// 0 car coords �gales
+		System.out.println("c1.compareTo(c2) ? "+ c1.compareTo(c2) );	// nb n�gatif car c1 < c2
+		System.out.println("c1.compareTo(new Coord('a', 7)) ? "+ c1.compareTo(new Coord('a', 7)) );	// 0 car coords �gales
 //
 //
 //		//////////////////////////////////

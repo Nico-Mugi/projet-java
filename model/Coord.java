@@ -75,6 +75,8 @@ public class Coord implements Comparable<Coord>{
 			ret=0;
 		}else {
 			int ligne = this.ligne-o.ligne;
+			int colonne = this.colonne-o.colonne;
+			ret=ligne*colonne;
 			
 		}
 		return ret ;
