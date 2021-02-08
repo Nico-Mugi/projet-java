@@ -66,11 +66,10 @@ public class ModelImplementor {
 
 
 	public boolean movePiece(Coord initCoord, Coord targetCoord) {
-		PieceModel piece = null;
+		PieceModel piece = findPiece(initCoord);
 		boolean isMovePieceDone = false;
 		
-		if(findPiece(initCoord)!=null) {
-			piece = this.findPiece(initCoord);
+		if(piece !=null) {
 			piece.move(targetCoord);
 			isMovePieceDone = true;
 		}
@@ -127,16 +126,16 @@ public class ModelImplementor {
 		String st = "";
 		String[][] damier = new String[ModelConfig.LENGTH][ModelConfig.LENGTH];
 
-//		// cr�ation d'un tableau 2D avec les noms des pi�ces � partir de la liste de pi�ces
-//		for(PieceModel piece : this.pieces) {
-//
-//			PieceSquareColor color = piece.getPieceColor();
-//			String stColor = (PieceSquareColor.WHITE.equals(color) ? "--B--" : "--N--" );
-//
-//			int col = piece.getColonne() -'a';
-//			int lig = piece.getLigne() -1;
-//			damier[lig][col ] = stColor ;
-//		}
+		// cr�ation d'un tableau 2D avec les noms des pi�ces � partir de la liste de pi�ces
+		for(PieceModel piece : this.pieces) {
+
+			PieceSquareColor color = piece.getPieceColor();
+			String stColor = (PieceSquareColor.WHITE.equals(color) ? "--B--" : "--N--" );
+
+			int col = piece.getColonne() -'a';
+			int lig = piece.getLigne() -1;
+			damier[lig][col ] = stColor ;
+		}
 
 		// Affichage du tableau formatt�
 		st = "     a      b      c      d      e      f      g      h      i      j\n";
