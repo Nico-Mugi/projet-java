@@ -42,7 +42,9 @@ public class Coord implements Comparable<Coord>{
 
 		boolean ret = false;
 
-		// TODO Atelier 1
+		if('a' <= coord.colonne && coord.colonne < 'a'+ MAX && 1 < coord.ligne && coord.ligne <= MAX) {
+			ret = true;
+		}
 		
 		return ret;
 	}
@@ -61,7 +63,7 @@ public class Coord implements Comparable<Coord>{
 	public int compareTo(Coord o) {
 		int ret = 999;
 		
-		// TODO Atelier 1
+
 		
 		return ret ;
 	}
