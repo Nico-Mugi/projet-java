@@ -34,7 +34,7 @@ public class PawnModel implements PieceModel{
 	public boolean hasThisCoord(Coord coord) {
 		boolean hasThisCoord = false;
 		if (coord.getLigne()==this.getLigne() && coord.getColonne()==this.getColonne()) {
-			
+			hasThisCoord=true;
 		}
 
 		return hasThisCoord;
