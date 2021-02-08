@@ -41,14 +41,23 @@ public class Coord implements Comparable<Coord>{
 	public static boolean coordonnees_valides(Coord coord){
 
 		boolean ret = false;
-
 		if (('a'<=coord.colonne)&&(coord.colonne<'a'+MAX)&&(1<coord.ligne)&&(coord.ligne<=MAX)) {
 			ret=true;
 		}
-		
 		return ret;
 	}
-
+	/**
+	 * 
+	 * @param coord
+	 * @return true si l'objet courant est egal a coord
+	 */
+	public boolean equals(Coord coord) {
+		boolean ret = false;
+		if((this.ligne==coord.ligne)&&(this.colonne==coord.colonne)){
+			ret=true;
+		}
+		return  ret;
+	}
 
 	/* (non-Javadoc)
 	 * @see java.lang.Comparable#compareTo(java.lang.Object)
@@ -62,9 +71,12 @@ public class Coord implements Comparable<Coord>{
 	@Override
 	public int compareTo(Coord o) {
 		int ret = 999;
-		
-		// TODO Atelier 1
-		
+		if((this.ligne==o.ligne)&&(this.colonne==o.colonne)){
+			ret=0;
+		}else {
+			//this.ligne-coord.ligne
+			
+		}
 		return ret ;
 	}
 
