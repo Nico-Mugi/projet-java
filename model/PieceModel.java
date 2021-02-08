@@ -13,6 +13,7 @@ public interface PieceModel {
 	 */
 	public char getColonne() ;
 	public int getLigne() ;
+	public Coord getCoord() ;
 	
 	/**
 	 * @param coord

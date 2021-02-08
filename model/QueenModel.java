@@ -38,6 +38,13 @@ public class QueenModel implements PieceModel {
 		return ligne;
 	}
 	
+
+	@Override
+	public Coord getCoord() {
+		return this.coord;
+	}
+	
+	
 	@Override
 	public boolean hasThisCoord(Coord coord) {
 		boolean hasThisCoord = false;

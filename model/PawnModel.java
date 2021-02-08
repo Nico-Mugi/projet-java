@@ -15,7 +15,6 @@ public class PawnModel implements PieceModel{
 		super();
 		this.coord = coord;
 		this.pieceColor = pieceColor;
-
 	}
 
 	@Override
@@ -31,21 +30,20 @@ public class PawnModel implements PieceModel{
 	}
 
 	@Override
-	public boolean hasThisCoord(Coord coord) {
-		boolean hasThisCoord = false;
-		
-		// TODO Atelier 1
+	public Coord getCoord() {
+		return this.coord;
+	}
 
-		return hasThisCoord;
+	@Override
+	public boolean hasThisCoord(Coord coord) {
+		if(coord.equals(this.getCoord()))
+			return true;
+		return false;
 	}
 
 	@Override
 	public PieceSquareColor getPieceColor() {
-		PieceSquareColor color = null;
-		
-		// TODO Atelier 1
-
-		return color;	
+		return this.pieceColor;	
 	}
 
 	/* (non-Javadoc)
@@ -53,26 +51,25 @@ public class PawnModel implements PieceModel{
 	 */
 	@Override
 	public String toString() {
-		String st = null;
-
-		// TODO Atelier 1
-
-		return st;
+		return "["+this.getPieceColor().toString().substring(0, 1)+"["+this.getLigne()+","+this.getColonne()+"]]";
 	}
 
 	@Override
 	public void move(Coord coord) {
-
-		// TODO Atelier 1
-
+		this.coord = coord;
 	}
 
 	@Override
 	public boolean isMoveOk(Coord targetCoord, boolean isPieceToCapture) {
 		boolean ret = false;
-
-		// TODO Atelier 1
-
+		int a = isPieceToCapture? 2 : 1;
+		if(PieceSquareColor.BLACK == this.getPieceColor())
+			a *= -1;
+		if((targetCoord.getColonne() - this.getColonne()) == a) {
+			if((targetCoord.getLigne() - this.getLigne()) == a) {
+				ret = true;
+			}
+		}
 		return ret;
 	}
 
