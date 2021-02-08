@@ -29,10 +29,10 @@ public class ModelImplementor {
 	}
 
 	public PieceSquareColor getPieceColor(Coord coord) {
-		PieceModel piece = null;
+		PieceModel piece = findPiece(coord);
 		PieceSquareColor color= null;
 		
-		if(findPiece(coord)!=null) {
+		if(piece!=null) {
 			piece = this.findPiece(coord);
 			color = piece.getPieceColor();
 		}
@@ -41,10 +41,10 @@ public class ModelImplementor {
 	}
 
 	public boolean isPiecehere(Coord coord) {
-		PieceModel piece = null;
+		PieceModel piece = findPiece(coord);
 		boolean isPiecehere = false;
 		
-		if(findPiece(coord)!=null) {
+		if(piece!=null) {
 			piece = this.findPiece(coord);
 			isPiecehere = piece.hasThisCoord(coord);
 		}
@@ -53,10 +53,10 @@ public class ModelImplementor {
 	}
 
 	public boolean isMovePieceOk(Coord initCoord, Coord targetCoord, boolean isPieceToTake) {
-		PieceModel piece = null;
+		PieceModel piece = findPiece(initCoord);
 		boolean isMovePieceOk = false;
 		
-		if(findPiece(initCoord)!=null) {
+		if(piece!=null) {
 			piece = this.findPiece(initCoord);
 			isMovePieceOk = piece.isMoveOk(targetCoord, isPieceToTake);
 		}
