@@ -65,11 +65,11 @@ public class Model implements BoardGame<Coord> {
 				System.out.println("Je suis dans le terter n°2");
 				// Recherche coord de l'�ventuelle pi�ce � prendre
 				toCapturePieceCoord = this.getToCapturePieceCoord(toMovePieceCoord, targetSquareCoord);
-
+				
 				// si le d�placement est l�gal (en diagonale selon algo pion ou dame)
 				boolean isPieceToCapture = toCapturePieceCoord != null;
 				if (this.isMovePiecePossible(toMovePieceCoord, targetSquareCoord, isPieceToCapture)) {
-
+					System.out.println("Je suis dans le terter n°3");
 					// d�placement effectif de la pi�ce
 					this.movePiece(toMovePieceCoord, targetSquareCoord);
 					isMoveDone = true;
@@ -77,7 +77,6 @@ public class Model implements BoardGame<Coord> {
 					// suppression effective de la pi�ce prise
 					this.remove(toCapturePieceCoord);
 
-					System.out.println("Je suis dans le terter n°3 : " + isMoveDone);
 					// promotion �ventuelle de la pi�ce apr�s d�placement
 					if (true) { // TODO : Test � changer atelier 3
 

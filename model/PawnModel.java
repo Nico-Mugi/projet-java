@@ -5,7 +5,7 @@ import java.util.List;
 
 import nutsAndBolts.PieceSquareColor;
 
-public class PawnModel extends AbstractPieceModel {
+public class PawnModel extends AbstractPieceModel implements Promotable {
 
 	public PawnModel(Coord coord, PieceSquareColor pieceColor) {
 		super(coord,pieceColor);
@@ -41,6 +41,18 @@ public class PawnModel extends AbstractPieceModel {
 		return ret;
 	}
 
+	public boolean isPromotable() {
+		if((getPieceColor() == PieceSquareColor.BLACK && getLigne()==1) || (getPieceColor() == PieceSquareColor.WHITE && getLigne()==10)) 
+			return true;
+		else 
+			return false;
+	}
 	
+	/**
+	 * Effectue la promotion du pion
+	 */
+	public void promote() {
+		throw new UnsupportedOperationException();
+	}
 
 }

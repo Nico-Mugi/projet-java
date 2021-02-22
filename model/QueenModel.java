@@ -19,9 +19,12 @@ public class QueenModel extends AbstractPieceModel {
 	@Override
 	public boolean isMoveOk(Coord targetCoord, boolean isPieceToCapture) {
 		boolean ret = false;
+		System.out.println("you were here");
 		if (Coord.coordonnees_valides(targetCoord)) {	
+			System.out.println("I was here");
 			if (Math.abs(targetCoord.getLigne()-this.getLigne())
 					== Math.abs(targetCoord.getColonne()-this.getColonne())) {
+				System.out.println("I am here");
 				ret = true;
 			}
 		}

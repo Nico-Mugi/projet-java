@@ -160,5 +160,16 @@ public class ModelImplementor {
 
 		return "\nDamier du model \n" + st;
 	}
+	
+	public void promote(Coord coord) {
+		PieceModel piece = findPiece(coord);
+		if(piece instanceof PawnModel) {
+			PawnModel pawn = (PawnModel) piece;
+			if(pawn.isPromotable()) {
+				
+			}
+		}
+		
+	}
 
 }
