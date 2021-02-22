@@ -58,10 +58,11 @@ public class Model implements BoardGame<Coord> {
 		// Si la pi�ce est d�pla�able (couleur du joueur courant et case arriv�e
 		// disponible)
 		if (this.isPieceMoveable(toMovePieceCoord, targetSquareCoord)) {
-
+			System.out.println("Je suis dans le terter n°1");
 			// S'il n'existe pas plusieurs pi�ces sur le chemin
 			if (this.isThereMaxOnePieceOnItinerary(toMovePieceCoord, targetSquareCoord)) {
 
+				System.out.println("Je suis dans le terter n°2");
 				// Recherche coord de l'�ventuelle pi�ce � prendre
 				toCapturePieceCoord = this.getToCapturePieceCoord(toMovePieceCoord, targetSquareCoord);
 
@@ -76,6 +77,7 @@ public class Model implements BoardGame<Coord> {
 					// suppression effective de la pi�ce prise
 					this.remove(toCapturePieceCoord);
 
+					System.out.println("Je suis dans le terter n°3 : " + isMoveDone);
 					// promotion �ventuelle de la pi�ce apr�s d�placement
 					if (true) { // TODO : Test � changer atelier 3
 
@@ -108,8 +110,7 @@ public class Model implements BoardGame<Coord> {
 	 *         et que les coordonn�es d'arriv�es soient dans les limites du tableau
 	 *         et qu'il n'y ait pas de pi�ce sur la case d'arriv�e
 	 */
-	boolean isPieceMoveable(Coord toMovePieceCoord, Coord targetSquareCoord) { // TODO : remettre en "private" apr�s
-																				// test unitaires
+	private boolean isPieceMoveable(Coord toMovePieceCoord, Coord targetSquareCoord) {
 		boolean bool = false;
 
 		// TODO : � compl�ter atelier 4 pour g�rer les rafles
@@ -136,7 +137,7 @@ public class Model implements BoardGame<Coord> {
 				count ++;
 			}
 		}
-		if(count>1) {
+		if(count<=1) {
 			isThereMaxOnePieceOnItinerary = true;
 		}
 		return isThereMaxOnePieceOnItinerary;
@@ -170,13 +171,7 @@ public class Model implements BoardGame<Coord> {
 	 *         param�tre est capable de r�pondre �cette question (par l'interm�diare
 	 *         du ModelImplementor)
 	 */
-	boolean isMovePiecePossible(Coord toMovePieceCoord, Coord targetSquareCoord, boolean isPieceToCapture) { // TODO :
-																												// remettre
-																												// en
-																												// "private"
-																												// apr�s
-																												// test
-																												// unitaires
+	private boolean isMovePiecePossible(Coord toMovePieceCoord, Coord targetSquareCoord, boolean isPieceToCapture) {
 		return this.implementor.isMovePieceOk(toMovePieceCoord, targetSquareCoord, isPieceToCapture);
 	}
 
@@ -184,8 +179,7 @@ public class Model implements BoardGame<Coord> {
 	 * @param toMovePieceCoord
 	 * @param targetSquareCoord D�placement effectif de la PieceModel
 	 */
-	void movePiece(Coord toMovePieceCoord, Coord targetSquareCoord) { // TODO : remettre en "private" apr�s test
-																		// unitaires
+	private void movePiece(Coord toMovePieceCoord, Coord targetSquareCoord) { 
 		this.implementor.movePiece(toMovePieceCoord, targetSquareCoord);
 	}
 
@@ -196,7 +190,7 @@ public class Model implements BoardGame<Coord> {
 		this.implementor.removePiece(toCapturePieceCoord);
 	}
 
-	void switchGamer() { // TODO : remettre en "private" apr�s test unitaires
+	private void switchGamer() { 
 		this.currentGamerColor = (PieceSquareColor.WHITE).equals(this.currentGamerColor) ? PieceSquareColor.BLACK
 				: PieceSquareColor.WHITE;
 

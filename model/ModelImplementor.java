@@ -77,9 +77,17 @@ public class ModelImplementor {
 	}
 
 	public void removePiece(Coord pieceToTakeCoord) {
+
 		pieces.remove(findPiece(pieceToTakeCoord));
 	}
 
+	/**
+	 * Return the coords on the itinerary to the targetCoord
+	 * 
+	 * @param initCoord
+	 * @param targetCoord
+	 * @return List<Coord>
+	 */
 	public List<Coord> getCoordsOnItinerary(Coord initCoord, Coord targetCoord) {
 		List<Coord> coordsOnItinerary = null;
 		PieceModel piece = findPiece(initCoord);
@@ -97,11 +105,12 @@ public class ModelImplementor {
 	private PieceModel findPiece(Coord coord) {
 
 		PieceModel findPiece = null;
-
-		for (PieceModel piece : pieces) {
-			if (piece.hasThisCoord(coord)) {
-				findPiece = piece;
-				break;
+		if (coord != null) {
+			for (PieceModel piece : pieces) {
+				if (piece.hasThisCoord(coord)) {
+					findPiece = piece;
+					break;
+				}
 			}
 		}
 
