@@ -136,6 +136,9 @@ public class Model implements BoardGame<Coord> {
 		boolean isThereMaxOnePieceOnItinerary = true; // TODO Atelier 2 - initialiser à false
 
 		// TODO Atelier 2
+		int diffColonne = (toMovePieceCoord.getColonne() - targetSquareCoord.getColonne())/2;
+		int diffLigne = (toMovePieceCoord.getLigne() - targetSquareCoord.getLigne())/2;
+		
 
 		return isThereMaxOnePieceOnItinerary;
 	}
@@ -171,7 +174,7 @@ public class Model implements BoardGame<Coord> {
 	 * @param targetSquareCoord
 	 * Déplacement effectif de la PieceModel
 	 */
-	void movePiece(Coord toMovePieceCoord, Coord targetSquareCoord) { // TODO : remettre en "private" après test unitaires
+	public void movePiece(Coord toMovePieceCoord, Coord targetSquareCoord) { // TODO : remettre en "private" après test unitaires
 		this.implementor.movePiece(toMovePieceCoord, targetSquareCoord);
 	}
 

@@ -140,12 +140,13 @@ public class Controller implements Mediator, BoardGame<Integer>, EventHandler<Mo
 	public OutputModelData<Integer> moveCapturePromote(Integer toMovePieceIndex, Integer targetSquareIndex) {
 
 		OutputModelData<Integer> outputControllerData = null;
-
-		OutputModelData<Coord> omdc = null;
-				
-		Model m = new Model();
-		m.moveCapturePromote(this.transformIndexToCoord(toMovePieceIndex),this.transformIndexToCoord(targetSquareIndex));
-		System.out.println(m + "11111111111111111111111111111");
+		OutputModelData<Coord> omd = this.model.moveCapturePromote(this.transformIndexToCoord(toMovePieceIndex),this.transformIndexToCoord(targetSquareIndex));
+		
+		if(omd.isMoveDone)
+		{
+			this.setToMovePieceIndex(toMovePieceIndex);
+			this.view.actionOnGui(new InputViewData<Integer>(toMovePieceIndex, targetSquareIndex, this.transformCoordToIndex(omd.capturedPieceCoord), this.transformCoordToIndex(omd.promotedPieceCoord), omd.promotedPieceColor));
+		}
 		
 		// Inutile d  reconstituer un objetOutputModelData<Integer>, aucun client ne le r�cup�re en mode local
 		return outputControllerData;

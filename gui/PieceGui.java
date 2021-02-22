@@ -52,7 +52,7 @@ public class PieceGui extends ImageView implements CheckersPieceGui {
 		File g = new File("");
 
 		if (ispawn) {
-			nomImageFile = pieceColor == PieceSquareColor.BLACK ? "caca.png" : "PionBlanc.png";
+			nomImageFile = pieceColor == PieceSquareColor.BLACK ? "caca.png" : "baby.png";
 		}
 		else {	
 			nomImageFile = pieceColor == PieceSquareColor.BLACK ? "DameNoire.png" : "DameBlanche.png";

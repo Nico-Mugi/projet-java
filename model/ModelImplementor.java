@@ -44,23 +44,22 @@ public class ModelImplementor {
 
 
 	public boolean movePiece(Coord initCoord, Coord targetCoord) {
-		if(this.isPiecehere(initCoord))
+		if(!this.isPiecehere(initCoord))
 			return false;
 		this.findPiece(initCoord).move(targetCoord);
 		return true;
 	}
 
 	public void removePiece(Coord pieceToTakeCoord) {
-
-		// TODO Atelier 2
+		this.pieces.remove(this.findPiece(pieceToTakeCoord));
 		
 	}
 
 	
 	public List<Coord> getCoordsOnItinerary(Coord initCoord, Coord targetCoord) {
 		List<Coord> coordsOnItinerary = null;
+
 		
-		// TODO Atelier 2
 		
 		return coordsOnItinerary;
 	}
