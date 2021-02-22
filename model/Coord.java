@@ -53,7 +53,7 @@ public class Coord implements Comparable<Coord>{
 	 */
 	public boolean equals(Coord coord) {
 		boolean ret = false;
-		if((this.ligne==coord.ligne)&&(this.colonne==coord.colonne)){
+		if(this.ligne==coord.ligne && this.colonne==coord.colonne){
 			ret=true;
 		}
 		return  ret;

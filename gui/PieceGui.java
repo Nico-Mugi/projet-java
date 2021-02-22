@@ -8,20 +8,19 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import nutsAndBolts.PieceSquareColor;
 
-
 /**
  * @author francoise.perrin
  * 
- * Cette classe permet de donner une image aux pi�ces
+ *         Cette classe permet de donner une image aux pi�ces
  *
  */
 
 public class PieceGui extends ImageView implements CheckersPieceGui {
-	
+
 	public PieceGui(int col, int ligne) {
 		Image image = null;
 		PieceSquareColor pieceColor = null;
-		if  ( !((col % 2 == 0 && ligne % 2 == 0) || (col % 2 != 0 && ligne % 2 != 0)) ) {
+		if (!((col % 2 == 0 && ligne % 2 == 0) || (col % 2 != 0 && ligne % 2 != 0))) {
 			if (ligne < 4)
 				pieceColor = PieceSquareColor.BLACK;
 			if (ligne > 5)
@@ -32,24 +31,22 @@ public class PieceGui extends ImageView implements CheckersPieceGui {
 			this.setImage(image);
 		}
 	}
-	
-	
-	
+
 	@Override
 	public void promote(Image image) {
-		
+
 		// ToDo Atelier 2, utile pour Atelier 3
-		
+
 	}
 
 	@Override
 	public boolean hasSameColorAsGamer(PieceSquareColor gamerColor) {
 
 		// ToDo Atelier 2, utile pour Atelier 4
-		
-		return false; // � changer 
+
+		return false; // � changer
 	}
-	
+
 	/**
 	 * @param pieceColor
 	 * @param ispawn
@@ -63,12 +60,11 @@ public class PieceGui extends ImageView implements CheckersPieceGui {
 
 		if (ispawn) {
 			nomImageFile = pieceColor == PieceSquareColor.BLACK ? "PionNoir.png" : "PionBlanc.png";
-		}
-		else {	
+		} else {
 			nomImageFile = pieceColor == PieceSquareColor.BLACK ? "DameNoire.png" : "DameBlanche.png";
 		}
 
-		pieceImageFile = g.getAbsolutePath()+"/images/" + nomImageFile;	// TODO - attention au chemin
+		pieceImageFile = g.getAbsolutePath() + "/images/" + nomImageFile; // TODO - attention au chemin
 		try {
 			image = new Image(new FileInputStream(pieceImageFile));
 		} catch (FileNotFoundException e) {
@@ -76,5 +72,5 @@ public class PieceGui extends ImageView implements CheckersPieceGui {
 		}
 		return image;
 	}
-	
+
 }
