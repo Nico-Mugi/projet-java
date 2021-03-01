@@ -97,5 +97,11 @@ public abstract class AbstractPieceModel implements PieceModel {
 	
 	@Override
 	public abstract boolean isMoveOk(Coord targetCoord, boolean isPieceToCapture);
+	
+	@Override
+	public int compareTo(PieceModel pieceModel) {
+		Coord coord = new Coord(pieceModel.getColonne(),pieceModel.getLigne());
+		return this.coord.compareTo(coord);
+	}
 
 }

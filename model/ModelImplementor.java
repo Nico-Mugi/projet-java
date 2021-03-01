@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
@@ -132,6 +133,8 @@ public class ModelImplementor {
 	public String toString() {
 
 		String st = "";
+		
+		//affichage classique
 //		String[][] damier = new String[ModelConfig.LENGTH][ModelConfig.LENGTH];
 //
 //		// cr�ation d'un tableau 2D avec les noms des pi�ces � partir de la liste de
@@ -160,29 +163,32 @@ public class ModelImplementor {
 //			}
 //			st += "\n";
 //		}
-		
-		//Affichage 3.2.1.a		
-		int count =0;
-		for (PieceModel piece : this.pieces) {
-		
-			PieceSquareColor color = piece.getPieceColor();
-			String stColor = (PieceSquareColor.WHITE.equals(color) ? "W" : "B");
-			count ++;
-			char col = piece.getColonne();
-			int lig = piece.getLigne();
-			st +="[" + stColor + "["+ lig+","+col+"]]";
-			if(count==5) {
-			st+="\n";
-					count=0;
-				}
-			}
-//		List<Iterator<PieceModel>> piece = new ArrayList<>();
-//		while(piece.iterator().hasNext()) {
-//			PieceSquareColor color = piece.iterator().next().getPieceColor();
+//		
+//		//Affichage 3.2.1.a		
+//		int count =0;
+//		for (PieceModel piece : this.pieces) {
+//		
+//			PieceSquareColor color = piece.getPieceColor();
 //			String stColor = (PieceSquareColor.WHITE.equals(color) ? "W" : "B");
 //			count ++;
-//			char col = piece.iterator().next().getColonne();
-//			int lig = piece.iterator().next().getLigne();
+//			char col = piece.getColonne();
+//			int lig = piece.getLigne();
+//			st +="[" + stColor + "["+ lig+","+col+"]]";
+//			if(count==5) {
+//			st+="\n";
+//					count=0;
+//				}
+//			
+//		
+//		Iterator<PieceModel> pieceIterator = pieces.iterator();
+//		int count =0;
+//		while(pieceIterator.hasNext()) {
+//			PieceModel pieceNext = pieceIterator.next();
+//			PieceSquareColor color = pieceNext.getPieceColor();
+//			String stColor = (PieceSquareColor.WHITE.equals(color) ? "W" : "B");
+//			count ++;
+//			char col = pieceNext.getColonne();
+//			int lig = pieceNext.getLigne();
 //			st +="[" + stColor + "["+ lig+","+col+"]]";
 //			if(count==5) {
 //			st+="\n";
@@ -190,8 +196,13 @@ public class ModelImplementor {
 //				}
 //			
 //		}
+		
+		//affichage 3.2.1.b
+		Collections pieceCollection = Collections.sort(pieces);
 		return "\nDamier du model \n" + st;
+		
 	}
+
 	
 	public void promote(Coord coord) {
 		PieceModel piece = findPiece(coord);
