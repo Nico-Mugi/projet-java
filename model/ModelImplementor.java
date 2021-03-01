@@ -1,7 +1,10 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 import nutsAndBolts.PieceSquareColor;
 
@@ -129,35 +132,64 @@ public class ModelImplementor {
 	public String toString() {
 
 		String st = "";
-		String[][] damier = new String[ModelConfig.LENGTH][ModelConfig.LENGTH];
-
-		// cr�ation d'un tableau 2D avec les noms des pi�ces � partir de la liste de
-		// pi�ces
+//		String[][] damier = new String[ModelConfig.LENGTH][ModelConfig.LENGTH];
+//
+//		// cr�ation d'un tableau 2D avec les noms des pi�ces � partir de la liste de
+//		// pi�ces
+//		for (PieceModel piece : this.pieces) {
+//
+//			PieceSquareColor color = piece.getPieceColor();
+//			String stColor = (PieceSquareColor.WHITE.equals(color) ? "--B--" : "--N--");
+//
+//			int col = piece.getColonne() - 'a';
+//			int lig = piece.getLigne() - 1;
+//			damier[lig][col] = stColor;
+//		}
+//
+//		// Affichage du tableau formatt�
+//		st = "     a      b      c      d      e      f      g      h      i      j\n";
+//		for (int lig = 9; lig >= 0; lig--) {
+//			st += (lig + 1) + "  ";
+//			for (int col = 0; col <= 9; col++) {
+//				String stColor = damier[lig][col];
+//				if (stColor != null) {
+//					st += stColor + "  ";
+//				} else {
+//					st += "-----  ";
+//				}
+//			}
+//			st += "\n";
+//		}
+		
+		//Affichage 3.2.1.a		
+		int count =0;
 		for (PieceModel piece : this.pieces) {
-
+		
 			PieceSquareColor color = piece.getPieceColor();
-			String stColor = (PieceSquareColor.WHITE.equals(color) ? "--B--" : "--N--");
-
-			int col = piece.getColonne() - 'a';
-			int lig = piece.getLigne() - 1;
-			damier[lig][col] = stColor;
-		}
-
-		// Affichage du tableau formatt�
-		st = "     a      b      c      d      e      f      g      h      i      j\n";
-		for (int lig = 9; lig >= 0; lig--) {
-			st += (lig + 1) + "  ";
-			for (int col = 0; col <= 9; col++) {
-				String stColor = damier[lig][col];
-				if (stColor != null) {
-					st += stColor + "  ";
-				} else {
-					st += "-----  ";
+			String stColor = (PieceSquareColor.WHITE.equals(color) ? "W" : "B");
+			count ++;
+			char col = piece.getColonne();
+			int lig = piece.getLigne();
+			st +="[" + stColor + "["+ lig+","+col+"]]";
+			if(count==5) {
+			st+="\n";
+					count=0;
 				}
 			}
-			st += "\n";
-		}
-
+//		List<Iterator<PieceModel>> piece = new ArrayList<>();
+//		while(piece.iterator().hasNext()) {
+//			PieceSquareColor color = piece.iterator().next().getPieceColor();
+//			String stColor = (PieceSquareColor.WHITE.equals(color) ? "W" : "B");
+//			count ++;
+//			char col = piece.iterator().next().getColonne();
+//			int lig = piece.iterator().next().getLigne();
+//			st +="[" + stColor + "["+ lig+","+col+"]]";
+//			if(count==5) {
+//			st+="\n";
+//					count=0;
+//				}
+//			
+//		}
 		return "\nDamier du model \n" + st;
 	}
 	

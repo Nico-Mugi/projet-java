@@ -70,16 +70,9 @@ public class Coord implements Comparable<Coord>{
 	 */
 	@Override
 	public int compareTo(Coord o) {
-		int ret = 999;
-		if((this.ligne==o.ligne)&&(this.colonne==o.colonne)){
-			ret=0;
-		}else {
-			int ligne = this.ligne-o.ligne;
-			int colonne = this.colonne-o.colonne;
-			ret=ligne*colonne;
-			
-		}
-		return ret ;
+		int thisValue = (MAX-this.ligne)*MAX + (this.colonne-'a'+1);
+		int oValue = (MAX-o.ligne)*MAX + (o.colonne-'a'+1);
+		return thisValue - oValue ;
 	}
 
 }
