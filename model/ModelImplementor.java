@@ -164,21 +164,22 @@ public class ModelImplementor {
 //			st += "\n";
 //		}
 //		
-//		//Affichage 3.2.1.a		
-//		int count =0;
-//		for (PieceModel piece : this.pieces) {
-//		
-//			PieceSquareColor color = piece.getPieceColor();
-//			String stColor = (PieceSquareColor.WHITE.equals(color) ? "W" : "B");
-//			count ++;
-//			char col = piece.getColonne();
-//			int lig = piece.getLigne();
-//			st +="[" + stColor + "["+ lig+","+col+"]]";
-//			if(count==5) {
-//			st+="\n";
-//					count=0;
-//				}
-//			
+		//Affichage 3.2.1.a		
+		int count =0;
+		for (PieceModel piece : this.pieces) {
+		
+			PieceSquareColor color = piece.getPieceColor();
+			String stColor = (PieceSquareColor.WHITE.equals(color) ? "W" : "B");
+			count ++;
+			char col = piece.getColonne();
+			int lig = piece.getLigne();
+			st +="[" + stColor + "["+ lig+","+col+"]]";
+			if(count==5) {
+			st+="\n";
+					count=0;
+				}
+		}
+			
 //		
 //		Iterator<PieceModel> pieceIterator = pieces.iterator();
 //		int count =0;
@@ -197,8 +198,24 @@ public class ModelImplementor {
 //			
 //		}
 		
-		//affichage 3.2.1.b
-		Collections pieceCollection = Collections.sort(pieces);
+//		//affichage 3.2.1.b-c
+//		ArrayList<PieceModel> pieceArray = new ArrayList<PieceModel>(pieces);
+//		Collections.sort(pieceArray);
+//		int count =0;
+//		for (PieceModel piece : pieceArray) {
+//		
+//			PieceSquareColor color = piece.getPieceColor();
+//			String stColor = (PieceSquareColor.WHITE.equals(color) ? "W" : "B");
+//			count ++;
+//			char col = piece.getColonne();
+//			int lig = piece.getLigne();
+//			st +="[" + stColor + "["+ lig+","+col+"]]";
+//			if(count==5) {
+//			st+="\n";
+//					count=0;
+//				}
+//			}
+		
 		return "\nDamier du model \n" + st;
 		
 	}

@@ -68,10 +68,20 @@ public class Coord implements Comparable<Coord>{
 	 * correspondant au N� de la case d'un tableau 2D repr�sent� par la Coord
 	 * ainsi le N� 1 correspond � la Coord ['a', 10], le N� 100 correspond � la Coord ['j', 1]  
 	 */
+	
+	//affichage par les lignes
+//	@Override
+//	public int compareTo(Coord o) {
+//		int thisValue = (MAX-this.ligne)*MAX + (this.colonne-'a'+1);
+//		int oValue = (MAX-o.ligne)*MAX + (o.colonne-'a'+1);
+//		return thisValue - oValue ;
+//	}
+//	
+	//affichage par les colonnes
 	@Override
 	public int compareTo(Coord o) {
-		int thisValue = (MAX-this.ligne)*MAX + (this.colonne-'a'+1);
-		int oValue = (MAX-o.ligne)*MAX + (o.colonne-'a'+1);
+		int thisValue = (this.ligne) + (this.colonne-MAX)*MAX;
+		int oValue = (o.ligne)+ (o.colonne-MAX)*MAX;
 		return thisValue - oValue ;
 	}
 

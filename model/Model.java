@@ -58,18 +58,15 @@ public class Model implements BoardGame<Coord> {
 		// Si la pi�ce est d�pla�able (couleur du joueur courant et case arriv�e
 		// disponible)
 		if (this.isPieceMoveable(toMovePieceCoord, targetSquareCoord)) {
-			System.out.println("Je suis dans le terter n°1");
 			// S'il n'existe pas plusieurs pi�ces sur le chemin
 			if (this.isThereMaxOnePieceOnItinerary(toMovePieceCoord, targetSquareCoord)) {
 
-				System.out.println("Je suis dans le terter n°2");
 				// Recherche coord de l'�ventuelle pi�ce � prendre
 				toCapturePieceCoord = this.getToCapturePieceCoord(toMovePieceCoord, targetSquareCoord);
 				
 				// si le d�placement est l�gal (en diagonale selon algo pion ou dame)
 				boolean isPieceToCapture = toCapturePieceCoord != null;
 				if (this.isMovePiecePossible(toMovePieceCoord, targetSquareCoord, isPieceToCapture)) {
-					System.out.println("Je suis dans le terter n°3");
 					// d�placement effectif de la pi�ce
 					this.movePiece(toMovePieceCoord, targetSquareCoord);
 					isMoveDone = true;

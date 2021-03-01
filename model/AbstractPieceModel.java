@@ -103,5 +103,39 @@ public abstract class AbstractPieceModel implements PieceModel {
 		Coord coord = new Coord(pieceModel.getColonne(),pieceModel.getLigne());
 		return this.coord.compareTo(coord);
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		boolean ret = false;
+		if(obj instanceof PieceModel) {
+			PieceModel pieceModel = (PieceModel) obj;
+			Coord coord = new Coord(pieceModel.getColonne(),pieceModel.getLigne());
+			if(this.coord.equals(coord) && this.getPieceColor()==pieceModel.getPieceColor()) {
+				ret=true;
+			}
+		}
+		return ret;
+	}
+	@Override
+	public int hashCode() {
+		// TODO Auto-generated method stub
+		return getLigne()*(getColonne()+10);
+	}
+	
+//	@Override
+//	public boolean equals(PieceModel pieceModel) {
+//		boolean bool=false;
+//		Coord coord = new Coord(pieceModel.getColonne(),pieceModel.getLigne());
+//		if(this.coord.equals(coord) && this.getPieceColor()==pieceModel.getPieceColor()) {
+//			bool=true;
+//		}
+//		return bool;
+//	}
+//	
+//	@Override
+//	public int hashCode() {
+//		return  getLigne()*(getColonne()+10);
+//	}
+	
 
 }
