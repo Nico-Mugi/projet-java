@@ -1,5 +1,6 @@
 package gui;
 
+import nutsAndBolts.PieceSquareColor;
 import javafx.geometry.Insets;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -11,37 +12,33 @@ import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import nutsAndBolts.PieceSquareColor;
 
 /**
  * @author francoiseperrin
  * 
- *         Classe d'affichage des carr�s du damier leur couleur est initialis�
- *         par les couleurs par d�faut du jeu
+ * Classe d'affichage des carr�s du damier
+ * leur couleur est initialis� par les couleurs par d�faut du jeu
  *
  */
 class SquareGui extends BorderPane implements CheckersSquareGui {
 
-	public SquareGui(int col, int ligne) {
-		PieceSquareColor squareColor;
+	private PieceSquareColor squareColor;    		// le carr� est Noir ou Blanc
 
-		// s�lection de la couleur de la case
-		if ((col % 2 == 0 && ligne % 2 == 0) || (col % 2 != 0 && ligne % 2 != 0)) {
-			squareColor = PieceSquareColor.WHITE;
-		} else {
-			squareColor = PieceSquareColor.BLACK;
-		}
+	public SquareGui (PieceSquareColor squareColor) {
+		super();
+		this.squareColor = squareColor;
 
 		// la couleur est d�finie par les valeurs par d�faut de configuration
-		Color color = PieceSquareColor.BLACK.equals(squareColor) ? GuiConfig.CASEBLACK : GuiConfig.CASEWHITE;
-		this.setBackground(new Background(new BackgroundFill(color, CornerRadii.EMPTY, Insets.EMPTY)));
-		this.setBorder(new Border(
-				new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+		Color color = PieceSquareColor.BLACK.equals(this.squareColor) ?
+				GuiConfig.CASEBLACK : GuiConfig.CASEWHITE;
 
+		this.setBackground(new Background(new BackgroundFill(color, CornerRadii.EMPTY, Insets.EMPTY)));
+		this.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
 	}
 
+
 	/**
-	 * Retourne l'indice du carr� sur la grille (N� de 0 � 99)
+	 *Retourne l'indice du carr� sur la grille (N� de 0 � 99)
 	 */
 	@Override
 	public int getSquareCoord() {
