@@ -25,10 +25,13 @@ public class ModelImplementor {
 
 	// la collection de pi�ces en jeu - m�lange noires et blanches
 	private Collection<PieceModel> pieces;
+	private int scoreBlack;
+	private int scoreWhite;
 
 	public ModelImplementor() {
 		super();
-
+		scoreBlack = ModelConfig.NBPIECE;
+		scoreWhite = ModelConfig.NBPIECE;
 		pieces = ModelFactory.createPieceModelCollection();
 	}
 
@@ -81,8 +84,14 @@ public class ModelImplementor {
 	}
 
 	public void removePiece(Coord pieceToTakeCoord) {
-
+		PieceSquareColor color = getPieceColor(pieceToTakeCoord);
 		pieces.remove(findPiece(pieceToTakeCoord));
+		if(color==PieceSquareColor.BLACK) {
+			scoreBlack--;
+		}else {
+			scoreWhite--;
+		}
+		
 	}
 
 	/**
@@ -241,4 +250,15 @@ public class ModelImplementor {
 		}
 		return isPromotable;
 	}
+	
+	public boolean endOfGame() {
+		boolean end =false;
+		if(scoreBlack==0) {
+			end = true;
+		}else if(scoreWhite==0) {
+			end = true;
+		}
+		return end;
+	}
+
 }

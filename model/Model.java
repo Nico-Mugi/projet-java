@@ -73,6 +73,9 @@ public class Model implements BoardGame<Coord> {
 
 					// suppression effective de la pi�ce prise
 					this.remove(toCapturePieceCoord);
+					if(implementor.endOfGame()) {
+						//booelan dans outputmodeldata true si fin
+					}
 
 					// promotion �ventuelle de la pi�ce apr�s d�placement
 					if(this.implementor.isPromotable(targetSquareCoord)) {
