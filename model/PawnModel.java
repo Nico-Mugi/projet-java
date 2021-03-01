@@ -27,7 +27,7 @@ public class PawnModel extends AbstractPieceModel implements Promotable {
 	public boolean isMoveOk(Coord targetCoord, boolean isPieceToCapture) {
 		boolean ret = false;
 		if (Coord.coordonnees_valides(targetCoord)) {
-			int coefColor = coefColor();
+			int coefColor = coefColor(targetCoord);
 			if (isPieceToCapture) {
 				coefColor *= 2;
 			}
@@ -54,5 +54,7 @@ public class PawnModel extends AbstractPieceModel implements Promotable {
 	public void promote() {
 		throw new UnsupportedOperationException();
 	}
+	
+
 
 }

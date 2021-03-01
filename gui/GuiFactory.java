@@ -75,7 +75,9 @@ public class GuiFactory {
 	 */
 	public static void PromotePiece(ImageView piece, PieceSquareColor promotedPieceColor) {
 
-		// ToDo Atelier 3
+		Image image = GuiFactory.createImage(promotedPieceColor,false);
+		PieceGui pieceGui = (PieceGui) piece;
+		pieceGui.promote(image);
 		
 	}
 	

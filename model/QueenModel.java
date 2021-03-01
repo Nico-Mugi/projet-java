@@ -19,12 +19,9 @@ public class QueenModel extends AbstractPieceModel {
 	@Override
 	public boolean isMoveOk(Coord targetCoord, boolean isPieceToCapture) {
 		boolean ret = false;
-		System.out.println("you were here");
-		if (Coord.coordonnees_valides(targetCoord)) {	
-			System.out.println("I was here");
+		if (Coord.coordonnees_valides(targetCoord)) {
 			if (Math.abs(targetCoord.getLigne()-this.getLigne())
 					== Math.abs(targetCoord.getColonne()-this.getColonne())) {
-				System.out.println("I am here");
 				ret = true;
 			}
 		}
@@ -40,6 +37,16 @@ public class QueenModel extends AbstractPieceModel {
 		String st = "Color : " + super.getPieceColor() + "\nLigne : " + this.getLigne() + "\nColonne : " + this.getColonne();
 
 		return st;
+	}
+	
+	@Override
+	public int coefColor(Coord targetCoord) {
+		int coefColor = 1;
+		if (getLigne()>targetCoord.getLigne()) {
+			coefColor = -1;
+		}
+		return coefColor;
+	
 	}
 
 }

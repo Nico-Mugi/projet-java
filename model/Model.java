@@ -78,11 +78,11 @@ public class Model implements BoardGame<Coord> {
 					this.remove(toCapturePieceCoord);
 
 					// promotion �ventuelle de la pi�ce apr�s d�placement
-					if (true) { // TODO : Test � changer atelier 3
-
-						// TODO atelier 3
+					if(this.implementor.isPromotable(targetSquareCoord)) {
+						this.implementor.promote(targetSquareCoord);
+						toPromotePieceCoord = targetSquareCoord;
+						toPromotePieceColor = this.implementor.getPieceColor(targetSquareCoord);
 					}
-
 					// S'il n'y a pas eu de prise
 					// ou si une rafle n'est pas possible alors changement de joueur
 					if (true) { // TODO : Test � changer atelier 4
@@ -129,17 +129,30 @@ public class Model implements BoardGame<Coord> {
 	 */
 	private boolean isThereMaxOnePieceOnItinerary(Coord toMovePieceCoord, Coord targetSquareCoord) {
 		boolean isThereMaxOnePieceOnItinerary = false;
-		List<Coord> coordsOnItinerary = implementor.getCoordsOnItinerary(toMovePieceCoord, targetSquareCoord);
-		int count = 0;
-		for(Coord coord : coordsOnItinerary) {
-			if(implementor.isPiecehere(coord)) {
-				count ++;
+
+		List<Coord> coordsOnItinerary = this.implementor.getCoordsOnItinerary(toMovePieceCoord, targetSquareCoord);
+
+		if (coordsOnItinerary != null) { 
+
+			int count = 0;
+			Coord potentialToCapturePieceCoord = null;
+			for (Coord coordOnItinerary : coordsOnItinerary) {
+				if (this.implementor.isPiecehere(coordOnItinerary)) {
+					count++;
+					potentialToCapturePieceCoord = coordOnItinerary;
+				}
+			}
+			// Il n'existe qu'1 seule pièce à prendre d'une autre couleur sur la trajectoire
+			if (count == 0 
+					|| (count == 1 && this.currentGamerColor != 
+					this.implementor.getPieceColor(potentialToCapturePieceCoord))) {
+				isThereMaxOnePieceOnItinerary = true;
 			}
 		}
-		if(count<=1) {
-			isThereMaxOnePieceOnItinerary = true;
-		}
+
 		return isThereMaxOnePieceOnItinerary;
+
+
 	}
 
 	/**

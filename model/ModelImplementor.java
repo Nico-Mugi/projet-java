@@ -163,13 +163,22 @@ public class ModelImplementor {
 	
 	public void promote(Coord coord) {
 		PieceModel piece = findPiece(coord);
-		if(piece instanceof PawnModel) {
-			PawnModel pawn = (PawnModel) piece;
-			if(pawn.isPromotable()) {
-				
-			}
+		if(piece instanceof Promotable) {
+			Promotable pawn = (Promotable) piece;
+			pieces.remove(pawn);
+			PieceModel queen = new QueenModel(coord, piece.getPieceColor());
+			pieces.add( queen);
 		}
 		
 	}
-
+	
+	public boolean isPromotable(Coord coord) {
+		PieceModel piece = findPiece(coord);
+		boolean isPromotable =false;
+		if(piece instanceof Promotable) {
+			Promotable pawn = (Promotable) piece;
+			isPromotable = pawn.isPromotable();
+		}
+		return isPromotable;
+	}
 }
