@@ -18,6 +18,21 @@ import nutsAndBolts.PieceSquareColor;
 
 public class PieceGui extends ImageView implements CheckersPieceGui {
 	
+	public PieceGui(int col, int ligne) {
+		Image image = null;
+		PieceSquareColor pieceColor = null;
+		if  ( !((col % 2 == 0 && ligne % 2 == 0) || (col % 2 != 0 && ligne % 2 != 0)) ) {
+			if (ligne < 4)
+				pieceColor = PieceSquareColor.BLACK;
+			if (ligne > 5)
+				pieceColor = PieceSquareColor.WHITE;
+		}
+		if (pieceColor != null) {
+			image = PieceGui.createImage(pieceColor, true);
+			this.setImage(image);
+		}
+	}
+	
 	public ImageView createPieceView(ImageView pieceGui, Image image, PieceSquareColor pieceColor){
 		image = PieceGui.createImage(pieceColor, true);
 		pieceGui.setImage(image);
@@ -26,17 +41,12 @@ public class PieceGui extends ImageView implements CheckersPieceGui {
 	
 	@Override
 	public void promote(Image image) {
-		
-		// ToDo Atelier 2, utile pour Atelier 3
-		
+		setImage(image);
 	}
 
 	@Override
 	public boolean hasSameColorAsGamer(PieceSquareColor gamerColor) {
-
-		// ToDo Atelier 2, utile pour Atelier 4
-		
-		return false; // à changer 
+		return getImage().getUrl().contains(gamerColor.name()) ; // à changer 
 	}
 	
 

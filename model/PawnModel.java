@@ -61,28 +61,38 @@ public class PawnModel implements PieceModel{
 
 	@Override
 	public boolean isMoveOk(Coord targetCoord, boolean isPieceToCapture) {
-		boolean ret = false;
-		int a = isPieceToCapture? 2 : 1;
-		if(PieceSquareColor.BLACK == this.getPieceColor())
-			a *= -1;
+		int a = (isPieceToCapture ? 2 : 1)*coefVertical();		
 		if((targetCoord.getColonne() - this.getColonne()) == a) {
 			if((targetCoord.getLigne() - this.getLigne()) == a) {
-				ret = true;
+				return true;
 			}
 		}
-		return ret;
+		return false;
 	}
 
 	@Override
 	public List<Coord> getCoordsOnItinerary(Coord targetCoord) {
 
-		List<Coord> coordsOnItinery = new LinkedList<Coord>(); 
-
-		// TODO Atelier 2
-
+		List<Coord> coordsOnItinery = new LinkedList<Coord>();
+		int coefVertical = coefVertical();
+		int coefHorizontal = coefHorizontal(targetCoord);
+		int ligne = this.getLigne();
+		char colonne = (char) (this.getColonne());
+		Coord coordOnItinery = new Coord(colonne, ligne);
+		while (!(targetCoord.equals(coordOnItinery))) {
+			ligne += coefVertical;
+			colonne = (char) (colonne + coefHorizontal);
+			coordsOnItinery.add(new Coord(colonne, ligne));
+		}
 		return coordsOnItinery;
 	}
 
-	
+	private int coefHorizontal(Coord targetCoord) {
+		return targetCoord.getColonne()-coord.getColonne() > 0 ? 1 : -1;
+	}
+
+	private int coefVertical() {
+		return this.getPieceColor() == PieceSquareColor.WHITE ? 1 : -1;
+	}
 }
 

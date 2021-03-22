@@ -52,11 +52,10 @@ public class Coord implements Comparable<Coord>{
 	 * @return true si l'objet courant est egal a coord
 	 */
 	public boolean equals(Coord coord) {
-		boolean ret = false;
-		if((this.ligne==coord.ligne)&&(this.colonne==coord.colonne)){
-			ret=true;
+		if(this.ligne==coord.ligne && this.colonne==coord.colonne){
+			return true;
 		}
-		return  ret;
+		return false;
 	}
 
 	/* (non-Javadoc)
@@ -74,8 +73,8 @@ public class Coord implements Comparable<Coord>{
 		if((this.ligne==o.ligne)&&(this.colonne==o.colonne)){
 			ret=0;
 		}else {
-			int ligne = this.ligne-o.ligne;
-			int colonne = this.colonne-o.colonne;
+			int ligne = o.ligne-this.ligne;
+			int colonne = o.colonne-this.colonne;
 			ret=ligne*colonne;
 			
 		}

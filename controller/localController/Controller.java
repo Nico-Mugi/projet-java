@@ -82,6 +82,7 @@ public class Controller implements Mediator, BoardGame<Integer>, EventHandler<Mo
 				checkersPieceGuiHandle(mouseEvent);
 		}
 		catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
@@ -95,7 +96,7 @@ public class Controller implements Mediator, BoardGame<Integer>, EventHandler<Mo
 		ImageView selectedPiece = (ImageView) mouseEvent.getSource();
 
 		// Recherche et fixe coordonn�e de la pi�ce s�lectionn�e 
-		CheckersSquareGui parentSquare = (CheckersSquareGui)  selectedPiece.getParent();
+		CheckersSquareGui parentSquare = (CheckersSquareGui) selectedPiece.getParent();
 		this.setToMovePieceIndex(parentSquare.getSquareCoord());
 
 		mouseEvent.consume();

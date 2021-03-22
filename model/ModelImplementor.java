@@ -52,14 +52,16 @@ public class ModelImplementor {
 
 	public void removePiece(Coord pieceToTakeCoord) {
 		this.pieces.remove(this.findPiece(pieceToTakeCoord));
-		
 	}
 
 	
 	public List<Coord> getCoordsOnItinerary(Coord initCoord, Coord targetCoord) {
 		List<Coord> coordsOnItinerary = null;
 
-		
+		PieceModel piece = findPiece(initCoord);
+		if (piece != null) {
+			coordsOnItinerary = piece.getCoordsOnItinerary(targetCoord);
+		}
 		
 		return coordsOnItinerary;
 	}
@@ -69,10 +71,12 @@ public class ModelImplementor {
 	 * @param coord
 	 * @return la pièce qui se trouve aux coordonnées indiquées
 	 */
-	 PieceModel findPiece(Coord coord) {		// TODO : mettre en "private" après test unitaires
-		for(PieceModel p : this.pieces) {
-			if(p.getCoord().equals(coord)){
-				return p;
+	 PieceModel findPiece(Coord coord) {
+		if(coord != null) {
+			for (PieceModel piece : this.pieces) {
+				if(piece.hasThisCoord(coord)) {
+					return piece;
+				}
 			}
 		}
 		return null;
